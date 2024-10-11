@@ -1,12 +1,7 @@
 # Show the data in the DataFrame.
 from tkinter.font import names
-
+import pytest
 from assertpy import assert_that
-import numpy as np
-from numpy.core.function_base import linspace
-from numpy.f2py.symbolic import as_ge
-
-from conftest import koalas_df
 
 
 def test_show_data_pandas(pandas_df):
@@ -23,7 +18,7 @@ def test_show_data_koalas(koalas_df):
 # Create a new koalas DataFrame with the first 5 columns in the Koalas DataFrame.
 def test_new_koalas_df(koalas_df):
     """Create a new koalas DataFrame with the first 5 columns in the Koalas DataFrame."""
-    new_koalas_df = koalas_df.iloc[:1, :2]
+    new_koalas_df = koalas_df.size()
     print(new_koalas_df)
 
 
@@ -63,7 +58,6 @@ def test_people_from_france_koalas(koalas_df):
 # Create a new koalas DataFrame with the first 5 columns in the Koalas DataFrame.
 def test_five_columns_koalas_df(koalas_df):
     """Create a new koalas DataFrame with the first 5 columns in the Koalas DataFrame."""
-    # new_koalas_df = koalas_df.iloc[:3, :4]
     koalas_df.to_spark().select('First Name', 'Last Name', 'Gender', 'Age', 'Country').show(5)
 
 
